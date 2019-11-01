@@ -1,3 +1,5 @@
-import Counter from './Counter';
+import Textarea, { TextareaProps } from './Textarea';
 
-export default Counter;
+export default Textarea;
+
+export { TextareaProps };

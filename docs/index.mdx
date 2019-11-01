@@ -3,6 +3,115 @@ name: 开始
 route: /
 ---
 
-# 开始使用
+import { useState, useCallback } from 'react';
+import { Playground, Props } from 'docz';
+import Textarea from '../src';
 
-在这里写项目使用文档。
+# @sinouiincubator/textarea
+
+多行文本输入框组件。
+
+[![npm version](https://img.shields.io/npm/v/@sinouiincubator/textarea)](https://www.npmjs.com/package/@sinouiincubator/textarea)
+[![downloads](https://img.shields.io/npm/dm/@sinouiincubator/textarea)](https://www.npmjs.com/package/@sinouiincubator/textarea)
+
+## 依赖安装
+
+```shell
+yarn add @sinouiincubator/textarea
+```
+
+## 简单示例
+
+```tsx
+import React, { useState, useCallback } from 'react';
+function SimpleDemo() {
+  const [value, setValue] = useState();
+
+  const onChange = useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const newValue = event.target.value;
+      setValue(newValue);
+    },
+    [],
+  );
+
+  return <Textarea value={value} onChange={onChange} />;
+}
+```
+
+<Playground>
+  {() => {
+    const [value, setValue] = useState();
+
+    const onChange=useCallback((event)=>{
+      const newValue = event.target.value;
+      setValue(newValue);
+    },[])
+    return <Textarea value={value} onChange={onChange}/>;
+
+}}
+
+</Playground>
+
+## 与@sinoui/sinoui-components-forms 集成
+
+[@sinoui/sinoui-components-forms](https://sinoui.github.io/sinoui-forms-library/sinoui-components-forms)是以`sinoui-components`为基础的表单控件库。
+`Textarea`与`@sinoui/sinoui-components-forms`的集成方式如下：
+
+首先定义`TextareaField`组件：
+
+`TextareaField.tsx`
+
+```tsx
+import React from 'react';
+import classNames from 'classnames';
+import Textarea, { TextareaProps } from '@sinouiincubator/textarea';
+import { Field, FieldProps } from '@sinoui/sinoui-components-forms';
+
+export type TextareaFieldProps = FieldProps<TextareaProps, string>;
+
+function TextareaField(props: TextareaFieldProps) {
+  const { className } = props;
+  return (
+    <Field
+      as={Textarea}
+      defaultValue=""
+      {...props}
+      className={classNames(className, 'sinoui-text-input-field')}
+    />
+  );
+}
+
+export default TextareaField;
+```
+
+```tsx
+import React from 'react';
+import { Form, FormItem, Label } from '@sinoui/sinoui-components-forms';
+import TextareaField from './TextareaField';
+
+function Demo() {
+  return (
+    <Form>
+      <FormItem>
+        <Label>备注</Label>
+        <TextareaField name="note" />
+      </FormItem>
+    </Form>
+  );
+}
+```
+
+## 样式自定义
+
+`Textarea`的 DOM 结构非常简单，只有一个`textarea`元素，具体如下：
+
+```html
+<textarea class="sinouiincubator-textarea" />
+```
+
+我们可以直接使用`className`定义`css`文件，也可以使用`styled-components`自定义样式。
+
+## 属性
+
+<Props of={Textarea} />
