@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea 镜像测试 onchange 1`] = `
+.c0 {
+  min-height: 80px;
+  box-sizing: border-box;
+  padding: 4px;
+  resize: none;
+  outline: none;
+  font-size: 1rem;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-weight: 400;
+  overflow: auto;
+  color: rgba(0,0,0,0.87);
+  background-color: transparent;
+  border: 1px solid rgba(0,0,0,0.42);
+  -webkit-transition: border-color 300ms;
+  transition: border-color 300ms;
+}
+
+.c0:hover {
+  padding: 3px;
+  border: 2px solid rgba(0,0,0,0.54);
+}
+
+<textarea
+  className="c0 sinouiincubator-textarea"
+  onBlur={[Function]}
+  onChange={[MockFunction]}
+  onFocus={[Function]}
+  value="001"
+/>
+`;
+
+exports[`Textarea 镜像测试 渲染Textarea 1`] = `
+.c0 {
+  min-height: 80px;
+  box-sizing: border-box;
+  padding: 4px;
+  resize: none;
+  outline: none;
+  font-size: 1rem;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-weight: 400;
+  overflow: auto;
+  color: rgba(0,0,0,0.87);
+  background-color: transparent;
+  border: 1px solid rgba(0,0,0,0.42);
+  -webkit-transition: border-color 300ms;
+  transition: border-color 300ms;
+}
+
+.c0:hover {
+  padding: 3px;
+  border: 2px solid rgba(0,0,0,0.54);
+}
+
+<textarea
+  className="c0 sinouiincubator-textarea"
+  onBlur={[Function]}
+  onFocus={[Function]}
+/>
+`;

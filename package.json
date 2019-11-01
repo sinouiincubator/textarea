@@ -1,11 +1,20 @@
 {
   "name": "@sinouiincubator/textarea",
   "version": "0.1.0",
+  "description": "多行文本输入框组件",
   "license": "MIT",
   "main": "dist/index.js",
   "umd:main": "dist/textarea.umd.production.js",
   "module": "dist/textarea.esm.js",
   "typings": "dist/index.d.ts",
+  "homepage": "https://sinouiincubator.github.io/textarea",
+  "bugs": {
+    "url": "https://github.com/sinouiincubator/textarea/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sinouiincubator/textarea.git"
+  },
   "scripts": {
     "start": "ts-lib-tools watch",
     "test": "ts-lib-tools test",
@@ -76,6 +85,7 @@
     "docz-theme-default": "^1.2.0",
     "gh-pages": "^2.1.1",
     "husky": "^3.0.9",
+    "jest-styled-components": "^6.3.3",
     "lint-staged": "^9.4.2",
     "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
@@ -90,5 +100,8 @@
     "tsconfig-paths-webpack-plugin": "^3.2.0",
     "typescript": "^3.6.4",
     "webpack-docz-ghpages-plugin": "^0.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

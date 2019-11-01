@@ -1,6 +1,38 @@
-# textarea
+# @sinouiincubator/textarea
 
-这是由[ts-lib-scripts](https://github.com/sinoui/ts-lib-scripts)创建的TypeScript库项目。
+多行文本输入框组件。
+
+[![npm version](https://img.shields.io/npm/v/@sinouiincubator/textarea)](https://www.npmjs.com/package/@sinouiincubator/textarea)
+[![downloads](https://img.shields.io/npm/dm/@sinouiincubator/textarea)](https://www.npmjs.com/package/@sinouiincubator/textarea)
+
+[官方文档](https://sinouiincubator.github.io/textarea)
+
+## 依赖安装
+
+```shell
+yarn add @sinouiincubator/textarea
+```
+
+## 简单示例
+
+```tsx
+import React, { useState, useCallback } from 'react';
+import Textarea from '@sinouiincubator/textarea';
+
+function SimpleDemo() {
+  const [value, setValue] = useState();
+
+  const onChange = useCallback(
+    (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const newValue = event.target.value;
+      setValue(newValue);
+    },
+    [],
+  );
+
+  return <Textarea value={value} onChange={onChange} />;
+}
+```
 
 ## 本地开发
 
@@ -43,16 +75,6 @@ yarn doc:publish
 ```
 
 ### 发布文档
-
-在发布文档之前，在`package.json`中配置好`homepage`，如下所示：
-
-```json
-{
-  "homepage": "https://sinouiincubator.github.io/editable-data-table"
-}
-```
-
-配置完之后就可以执行下面的命令行发布文档：
 
 ```shell
 yarn doc:publish
