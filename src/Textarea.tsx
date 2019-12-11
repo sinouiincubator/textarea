@@ -2,7 +2,14 @@ import React, { useState, useCallback } from 'react';
 import styled, { css } from 'styled-components';
 import classNames from 'classnames';
 
-export interface TextareaProps {
+export interface TextareaProps
+  extends Omit<
+    React.DetailedHTMLProps<
+      React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+      HTMLTextAreaElement
+    >,
+    'ref'
+  > {
   /**
    * 文本框的值
    */
@@ -75,35 +82,40 @@ const StyledTextarea = styled.textarea<TextareaProps & { focused?: boolean }>`
  * 多行文本输入框
  * @param props TextareaProps
  */
-export default function Textarea(props: TextareaProps) {
-  const { defaultValue, value, onChange, onBlur, className } = props;
-  const [focused, setFocused] = useState(false);
+const Textarea = React.forwardRef(
+  (props: TextareaProps, ref: React.Ref<HTMLTextAreaElement>) => {
+    const { defaultValue, value, onChange, onBlur, className } = props;
+    const [focused, setFocused] = useState(false);
 
-  /**
-   * 获取焦点时的回调函数
-   */
-  const handleOnFocus = useCallback(() => setFocused(true), []);
+    /**
+     * 获取焦点时的回调函数
+     */
+    const handleOnFocus = useCallback(() => setFocused(true), []);
 
-  /**
-   * 失去焦点时的回调函数
-   */
-  const handleBlur = useCallback(() => {
-    setFocused(false);
-    if (onBlur) {
-      onBlur();
-    }
-  }, [onBlur]);
+    /**
+     * 失去焦点时的回调函数
+     */
+    const handleBlur = useCallback(() => {
+      setFocused(false);
+      if (onBlur) {
+        onBlur();
+      }
+    }, [onBlur]);
 
-  return (
-    <StyledTextarea
-      {...props}
-      defaultValue={defaultValue}
-      value={value}
-      onChange={onChange}
-      onFocus={handleOnFocus}
-      focused={focused}
-      onBlur={handleBlur}
-      className={classNames('sinouiincubator-textarea', className)}
-    />
-  );
-}
+    return (
+      <StyledTextarea
+        {...props}
+        ref={ref}
+        defaultValue={defaultValue}
+        value={value}
+        onChange={onChange}
+        onFocus={handleOnFocus}
+        focused={focused}
+        onBlur={handleBlur}
+        className={classNames('sinouiincubator-textarea', className)}
+      />
+    );
+  },
+);
+
+export default Textarea;

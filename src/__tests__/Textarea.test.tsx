@@ -7,6 +7,8 @@ import { ThemeProvider } from 'styled-components';
 import { defaultTheme } from '@sinoui/theme';
 import Textarea from 'src/Textarea';
 
+afterEach(cleanup);
+
 describe('Textarea 镜像测试', () => {
   it('渲染Textarea', () => {
     const tree = renderer
@@ -71,5 +73,17 @@ describe('验收测试', () => {
     fireEvent.blur(getByPlaceholderText('请输入内容'));
 
     expect(onBlur).toBeCalledTimes(1);
+  });
+
+  it('ref 引用根元素', () => {
+    const ref = React.createRef<any>();
+
+    const { getByTestId } = render(
+      <ThemeProvider theme={defaultTheme}>
+        <Textarea data-testid="textarea" ref={ref} />
+      </ThemeProvider>,
+    );
+
+    expect(ref.current).toBe(getByTestId('textarea'));
   });
 });
